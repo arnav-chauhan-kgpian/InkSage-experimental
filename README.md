@@ -142,18 +142,48 @@ context_awareness:
 InkSage follows a modular, event-driven architecture:
 
 ```text
-src/
-├── core/
-│   ├── assistant.py       # The Orchestrator (Signals & State)
-│   ├── engine.py          # PyTorch/Transformers Wrapper (The Brain)
-│   ├── context_sniffer.py # Active Window Detector (The Chameleon)
-│   └── keyboard_monitor.py# Global Input Hook (The Eyes)
-├── ui/
-│   ├── main_window.py     # The Dashboard (Solid Mode)
-│   ├── suggestion_widget.py # The Popup (Smart Clamping)
-│   └── styles.py          # Centralized CSS
-└── workers/
-    └── generation_worker.py # Background Threading (Prevents UI Freeze)
+inksage/
+├── config/
+│   └── settings.yaml          # Central configuration (Model, UI, Hotkeys)
+├── logs/
+│   └── inksage.log            # Runtime logs for debugging
+├── models/
+│   └── .keep                  # Placeholder for downloaded AI models
+├── src/
+│   ├── core/                  # --- The Brains ---
+│   │   ├── __init__.py
+│   │   ├── assistant.py       # Central Coordinator (Signals & State)
+│   │   ├── audio_manager.py   # Voice Recording & Transcription (Whisper)
+│   │   ├── context_sniffer.py # Active Window Detector (The Chameleon)
+│   │   ├── engine.py          # PyTorch/Transformers Wrapper (The AI)
+│   │   ├── keyboard_monitor.py# Global Hotkeys & Input Hook
+│   │   ├── pii_scrubber.py    # Privacy Guard (Redacts sensitive data)
+│   │   └── text_buffer.py     # Thread-safe input memory
+│   ├── ui/                    # --- The Looks ---
+│   │   ├── __init__.py
+│   │   ├── auto_write_dialog.py # Long-form generation window
+│   │   ├── main_window.py     # The Command Bar (Dashboard)
+│   │   ├── rephrase_widget.py # Text rewriting tool
+│   │   ├── styles.py          # Visual Theme Manager (Solid Mode)
+│   │   ├── suggestion_widget.py # Quick-complete popup
+│   │   └── tray_icon.py       # System Tray integration
+│   ├── utils/                 # --- The Helpers ---
+│   │   ├── __init__.py
+│   │   ├── clipboard.py       # Cross-platform Copy/Paste logic
+│   │   └── config.py          # Config Loader Singleton
+│   ├── workers/               # --- The Muscle ---
+│   │   ├── __init__.py
+│   │   └── generation_worker.py # Background Threading (Prevents UI Freeze)
+│   ├── __init__.py
+│   └── main.py                # Application Entry Point
+├── .gitignore                 # Git exclusion rules
+├── CHANGELOG.md               # Version history
+├── LICENSE                    # Apache 2.0 License
+├── README.md                  # Documentation
+├── requirements.txt           # Python dependencies
+├── run_inksage.py             # User Launcher script
+├── setup.py                   # Packaging script
+└── test_installation.py       # Environment Diagnostic tool
 ```
 
 -----
