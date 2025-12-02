@@ -1,0 +1,30 @@
+# InkSage Context Engine - Dependencies
+
+# --- GUI Framework (Modern Qt) ---
+PySide6>=6.5.0
+
+# --- Neural Engine (PyTorch / Hugging Face) ---
+# Core PyTorch library
+torch>=2.0.0
+
+# Transformers (Updated for Qwen 2.5 support)
+transformers>=4.40.0
+
+# Accelerate (Required for device_map="auto" / efficient loading)
+accelerate>=0.26.0
+
+# --- Context Awareness ---
+# Detects active window titles
+pygetwindow>=0.0.9
+
+# --- Input Monitoring ---
+# Global keyboard hooks
+pynput>=1.7.6
+
+# --- Configuration ---
+pyyaml>=6.0
+
+# --- Voice & Audio ---
+faster-whisper>=1.0.0
+PyAudio>=0.2.14
+numpy>=1.24.0

@@ -1,0 +1,96 @@
+# ==============================================================================
+#  🔮 InkSage Configuration
+#  The Local Context Engine v1.0.0
+# ==============================================================================
+
+# --- Application Meta ---
+app:
+  name: "InkSage"
+  version: "1.0.0"
+  window_title: "InkSage Context Engine"
+  debug_mode: false
+
+# --- 🧠 Neural Engine (PyTorch / Hugging Face) ---
+engine:
+  model_path: "Qwen/Qwen2.5-1.5B-Instruct"
+  
+  # 🚨 TUNED FOR STABILITY 🚨
+  default_generation:
+    max_tokens: 64           # Shorter completions are safer for auto-complete
+    temperature: 0.3         # Lower = More precise, Less random stuttering
+    top_p: 0.85              # Slightly stricter sampling
+    repetition_penalty: 1.2  # Stronger penalty to stop "Wwwhooooo" loops
+
+# --- 🦎 Context Awareness ---
+context_awareness:
+  enabled: true
+  check_interval: 2000
+  default_role: "general"
+  
+  roles:
+    code:
+      apps: ["code", "pycharm", "cursor", "intellij", "terminal", "powershell", "cmd", "python", "sublime"]
+      system_prompt: "You are an expert developer. Complete the code logically. Do not repeat code."
+    
+    professional:
+      apps: ["outlook", "word", "slack", "teams", "gmail", "docs"]
+      system_prompt: "You are a professional editor. Complete the sentence naturally."
+    
+    creative:
+      apps: ["notion", "obsidian", "writer", "journal", "sticky notes", "notepad"]
+      system_prompt: "You are a creative writing assistant. Complete the text fluidly."
+
+# --- 🎙️ Voice ---
+voice:
+  enabled: true
+  model_size: "base"
+  device: "auto"
+  language: "en"
+  refinement_prompt: "Transcribe accurately."
+
+# --- 🛡️ Privacy ---
+privacy:
+  pii_scrubbing: true
+  local_only: true
+
+# --- 📝 Text Processing ---
+text:
+  buffer_size: 2000
+  min_context_length: 15   # 🚨 INCREASED: Won't trigger on short words like "Who"
+  max_context_length: 1000
+  debounce_delay: 700      # 🚨 INCREASED: Waits longer before triggering
+
+# --- 💎 UI Customization ---
+ui:
+  theme: "dark"
+  opacity: 1.0
+  font_size: 16
+  window_size:
+    width: 800
+    height: 600
+  
+  colors:
+    primary: "#4a9eff"
+    secondary: "#45a165"
+    accent: "#9b59b6"
+    background: "#21252b"
+    text: "#eceff4"
+    border: "#3b4048"
+
+# --- ⌨️ Input Monitoring ---
+keyboard:
+  enabled: true
+  # Removed 'space' from triggers to prevent constant popup spam
+  trigger_keys: ["enter", "tab"] 
+  hotkeys:
+    toggle_assistant: "ctrl+shift+q"
+    quick_complete:   "ctrl+shift+c"
+    rephrase:         "ctrl+shift+r"
+    dictate:          "ctrl+shift+d"
+
+# --- 📊 Logging ---
+logging:
+  level: "INFO"
+  file: "logs/inksage.log"
+  max_size: "10MB"
+  backup_count: 3

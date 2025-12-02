@@ -1,0 +1,46 @@
+# --- Python Standard ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# --- Distribution & Packaging ---
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Environment Variables ---
+.env
+
+# --- Logs ---
+logs/
+*.log
+
+# --- InkSage Specific ---
+# Ignore all contents of models folder (large AI files)
+models/*
+# But keep the .keep file so the folder structure exists in Git
+!models/.keep
+
+# specific AI file extensions (safety net)
+*.gguf
+*.bin
+*.pth
+*.safetensors
+*.pt
+
+# Temporary audio recording
+assets/active_recording.wav
+
+# --- IDEs ---
+.vscode/
+.idea/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
