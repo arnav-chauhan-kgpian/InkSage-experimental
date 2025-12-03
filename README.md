@@ -42,7 +42,7 @@ InkSage watches your active window title to understand your context. It switches
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/yourusername/inksage.git](https://github.com/yourusername/inksage.git)
+git clone [https://github.com/arnav-chauhan-kgpian/InkSage-experimental.git](https://github.com/arnav-chauhan-kgpian/InkSage-experimental.git)
 cd inksage
 ````
 
